@@ -10,11 +10,5 @@ function App() {
   );
 }
 
-/*
-const mapStateToProps =(state)=>{
-  return {
-      state
-  }
-}
-*/
+
 export default App;

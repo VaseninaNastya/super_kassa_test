@@ -3,13 +3,17 @@ import s from './button.module.css'
 import cl from "classnames";
 import {connect} from 'react-redux'
 import { changeStateAction } from '../../actions';
+
+
+
+
 class Button extends React.Component {
-    state = {
-        chosen: false
-    }
+ 
+
     render() {
-        const buttonClass = cl(s.mainButton, { [s.chosen]: !this.props.buttonState });
-        console.log('пропсы в баттоне', this.props);
+        const buttonClass = cl(s.mainButton, s.spiner,{ [s.chosen]: this.props.chosen });
+
+
         return (
             <div className={s.buttonContainer}>
                 <div onClick={() => this.props.changeState()} className={buttonClass}>
@@ -20,10 +24,9 @@ class Button extends React.Component {
 
 const mapStateToProps =(state)=>{
     return {
-        buttonState: state.chosen
+        chosen: state.chosen,
     }
 }
-
 const mapDispatchToProps =(dispatch)=>{
     return{
         changeState: () => dispatch(changeStateAction())
