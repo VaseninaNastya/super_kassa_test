@@ -1,5 +1,6 @@
+
 .mainButton{
-    background-color: red;
+    background-color:red;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -7,9 +8,13 @@
     position: absolute;
     top: 50%;
     left: 50%;
+
 }
 .chosen{
     background-color:green
+}
+.undefinedButton{
+    background-color:white
 }
 .buttonContainer{
     width: 100%;

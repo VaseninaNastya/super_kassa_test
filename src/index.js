@@ -7,12 +7,23 @@ import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import rootRedusers from './reducers'
 import {changeStateAction} from './actions'
+import database from './services/firebase'
+
+
 
 const store = new createStore(rootRedusers);
-console.log('####; store', store.getState())
 
-store.dispatch(changeStateAction())
-console.log('store', store.getState());
+        database.ref('/button/').once('value').then(res => {
+        let ch = res.val().chosen;
+        store.dispatch(changeStateAction())
+        if (!ch) {
+          store.dispatch(changeStateAction())
+        }
+        }
+        )
+
+
+
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
@@ -21,7 +32,5 @@ ReactDOM.render(
   </Provider>, document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+
 serviceWorker.unregister();
