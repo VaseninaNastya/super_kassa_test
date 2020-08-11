@@ -8,11 +8,13 @@ import { changeStateAction } from '../../actions';
 
 
 class Button extends React.Component {
- 
+    componentDidMount() {
+        
+    }
 
     render() {
-        const buttonClass = cl(s.mainButton, s.spiner,{ [s.chosen]: this.props.chosen });
-
+const propschosen = this.props.chosen
+        const buttonClass = cl(s.mainButton, {[s.undefinedButton]:propschosen===undefined}, {[s.chosen]:propschosen});
 
         return (
             <div className={s.buttonContainer}>

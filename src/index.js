@@ -15,9 +15,10 @@ const store = new createStore(rootRedusers);
 
         database.ref('/button/').once('value').then(res => {
         let ch = res.val().chosen;
-            if (ch) {
-              store.dispatch(changeStateAction())
-            }
+        store.dispatch(changeStateAction())
+        if (!ch) {
+          store.dispatch(changeStateAction())
+        }
         }
         )
 
